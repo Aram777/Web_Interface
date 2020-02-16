@@ -1,0 +1,2 @@
+C:\MyProg\web_interfaces\obj\Debug\web_interfaces.njsprojAssemblyReference.cache
+C:\MyProg\web_interfaces\bin\Microsoft.NodejsTools.WebRole.dll
