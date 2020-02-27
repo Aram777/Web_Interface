@@ -32,17 +32,9 @@ router.get('/:id', function (req, res, next) {
 /*post method for create location*/
 router.post('/create', function (req, res, next) {
     var name = req.body.name;
-    var parent_id = req.body.parent_id;
-    var sql = '';
-    if (parent_id > 0) {
-
-        sql = `INSERT INTO location (name) VALUES ("${name}")`;
-
-    }
-    else {
-        sql = `INSERT INTO location (name) VALUES ("${name}")`;
-
-    }
+   
+    var sql = `INSERT INTO location (locationtitle) VALUES ("${name}")`;
+    
     db.query(sql, function (err, result) {
         if (err) {
             res.status(500).send({ error: 'Something failed!' })
@@ -57,7 +49,7 @@ router.put('/update/:id', function (req, res, next) {
     var name = req.body.name;
     var parent_id = req.body.parent_id;
     
-    var sql = `UPDATE category SET name="${name}" WHERE location_id=${id}`;
+    var sql = `UPDATE location SET name="${name}" WHERE location_id=${id}`;
     db.query(sql, function (err, result) {
         if (err) {
             res.status(500).send({ error: sql })
@@ -69,7 +61,7 @@ router.put('/update/:id', function (req, res, next) {
 /*delete method for delete location*/
 router.delete('/delete/:id', function (req, res, next) {
     var id = req.params.id;
-    var sql = `DELETE FROM category WHERE location_id=${id}`;
+    var sql = `DELETE FROM location WHERE location_id=${id}`;
     db.query(sql, function (err, result) {
         if (err) {
             res.status(500).send({ error: 'Something failed!' })
