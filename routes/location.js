@@ -36,7 +36,7 @@ router.post('/create', function (req, res, next) {
     var sql = '';
     if (parent_id > 0) {
 
-        sql = `INSERT INTO location (name, parent_id) VALUES ("${name}", "${parent_id}")`;
+        sql = `INSERT INTO location (name) VALUES ("${name}")`;
 
     }
     else {
@@ -57,7 +57,7 @@ router.put('/update/:id', function (req, res, next) {
     var name = req.body.name;
     var parent_id = req.body.parent_id;
     
-    var sql = `UPDATE category SET name="${name}", parent_id=${parent_id} WHERE location_id=${id}`;
+    var sql = `UPDATE category SET name="${name}" WHERE location_id=${id}`;
     db.query(sql, function (err, result) {
         if (err) {
             res.status(500).send({ error: sql })
